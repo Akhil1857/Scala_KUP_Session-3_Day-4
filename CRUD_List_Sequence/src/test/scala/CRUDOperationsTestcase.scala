@@ -49,33 +49,33 @@ class CRUDOperationsTestcase extends AnyFlatSpec with Matchers {
 
   "A CRUDUsingSequence" should "create a new a sequence[String] with the value added to it" in {
     val crud = new CRUDUsingSequence[String]()
-    val list = Seq("Apple", "Mango", "Guava")
-    val resultantList = crud.create("Papaya", list)
-    resultantList should contain("Papaya")
+    val sequence = Seq("Apple", "Mango", "Guava")
+    val resultantSequence = crud.create("Papaya", sequence)
+    resultantSequence should contain("Papaya")
   }
   it should "create a new a sequence[Integer] with the value added to it" in {
     val crud = new CRUDUsingSequence[Int]()
-    val list = Seq(101, 201, 301)
-    val resultantList = crud.create(401, list)
-    resultantList should contain(401)
+    val sequence = Seq(101, 201, 301)
+    val resultantSequence = crud.create(401, sequence)
+    resultantSequence should contain(401)
   }
   it should "update the value[String] in the list with the given updated value " in {
     val crud = new CRUDUsingSequence[String]()
-    val list = Seq("Apple", "Mango", "Guava")
-    val resultantList = crud.update("Papaya", "Guava", list)
-    resultantList should equal(Seq("Apple", "Mango", "Papaya"))
+    val sequence = Seq("Apple", "Mango", "Guava")
+    val resultantSequence = crud.update("Papaya", "Guava", sequence)
+    resultantSequence should equal(Seq("Apple", "Mango", "Papaya"))
   }
   it should "update the value[Integer] in the list with the given updated value " in {
     val crud = new CRUDUsingSequence[Int]()
-    val list = Seq(101, 201, 301)
-    val resultantList = crud.update(401, 301, list)
-    resultantList should equal(Seq(101, 201, 401))
+    val sequence = Seq(101, 201, 301)
+    val resultantSequence = crud.update(401, 301, sequence)
+    resultantSequence should equal(Seq(101, 201, 401))
   }
   it should "return the same list when trying to delete the element which is not present in the list" in {
     val crud = new CRUDUsingSequence[String]()
-    val list = Seq("Apple", "Mango", "Guava")
-    val resultantList = crud.delete("Papaya", list)
-    resultantList should equal(Seq("Apple", "Mango", "Guava"))
+    val sequence = Seq("Apple", "Mango", "Guava")
+    val resultantSequence = crud.delete("Papaya", sequence)
+    resultantSequence should equal(Seq("Apple", "Mango", "Guava"))
   }
 
 }

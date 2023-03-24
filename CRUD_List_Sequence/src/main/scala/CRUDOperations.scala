@@ -46,29 +46,29 @@ class CRUDUsingList[A] extends CRUDOperations[A] {
 // CRUD :- C-create R-read U- update D- delete using the Sequence
 
 class CRUDUsingSequence[A] extends CRUDOperations[A] {
-  override def create(value: A, list: Seq[A]): Seq[A] = {
-    value +: list
+  override def create(value: A, sequence: Seq[A]): Seq[A] = {
+    value +: sequence
   }
 
-  override def read(list: Seq[A]): Seq[A] = list
+  override def read(sequence: Seq[A]): Seq[A] = sequence
 
-  override def update(valueAoInsert: A, valueAoUpdate: A, list: Seq[A]): Seq[A] = {
+  override def update(valueAoInsert: A, valueAoUpdate: A, sequence: Seq[A]): Seq[A] = {
     try {
-      val index = list.indexOf(valueAoUpdate)
+      val index = sequence.indexOf(valueAoUpdate)
       if (index >= 0) {
-        list.updated(index, valueAoInsert)
+        sequence.updated(index, valueAoInsert)
       }
       else {
         throw new NoSuchElementException("valueAoUpdate not found")
       }
     } catch {
       case ex: NoSuchElementException => println(s"Error: ${ex.getMessage}")
-        list
+        sequence
     }
   }
 
-  override def delete(value: A, list: Seq[A]): Seq[A] = {
-    val updatedList = list.filter(_ != value)
+  override def delete(value: A, sequence: Seq[A]): Seq[A] = {
+    val updatedList = sequence.filter(_ != value)
     updatedList
   }
 }
