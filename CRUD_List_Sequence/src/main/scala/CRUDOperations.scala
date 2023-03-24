@@ -21,11 +21,11 @@ class CRUDUsingList[A] extends CRUDOperations[A] {
     list.toList
   }
 
-  override def update(valueAoInsert: A, valueAoUpdate: A, list: Seq[A]): List[A] = {
+  override def update(valueToInsert: A, valueToUpdate: A, list: Seq[A]): List[A] = {
     try {
-      val index = list.indexOf(valueAoUpdate)
+      val index = list.indexOf(valueToUpdate)
       if (index >= 0) {
-        val updatedList = list.updated(index, valueAoInsert)
+        val updatedList = list.updated(index, valueToInsert)
         updatedList.toList
       }
       else {
@@ -52,11 +52,11 @@ class CRUDUsingSequence[A] extends CRUDOperations[A] {
 
   override def read(sequence: Seq[A]): Seq[A] = sequence
 
-  override def update(valueAoInsert: A, valueAoUpdate: A, sequence: Seq[A]): Seq[A] = {
+  override def update(valueToInsert: A, valueToUpdate: A, sequence: Seq[A]): Seq[A] = {
     try {
-      val index = sequence.indexOf(valueAoUpdate)
+      val index = sequence.indexOf(valueToUpdate)
       if (index >= 0) {
-        sequence.updated(index, valueAoInsert)
+        sequence.updated(index, valueToInsert)
       }
       else {
         throw new NoSuchElementException("valueAoUpdate not found")
